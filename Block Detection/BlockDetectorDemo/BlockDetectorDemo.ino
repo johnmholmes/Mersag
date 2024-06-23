@@ -1,7 +1,7 @@
 #include <LibPrintf.h>
 
 
-// Demo for 4 types of sensor
+// Demo for 5 types of sensor
 const int PM_PIN = 4;//PM:  pocket money 7 kit
 const int DD_PIN = 5;//DD: diode drop circuit
 const int PS_PIN = 3;//PS: point sensor-> infra red refluctive
