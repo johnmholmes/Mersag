@@ -80,7 +80,7 @@ bool calculateAnalog() {
     }
     sampleTotal =0;
   }
-  return CT
+  return CT;
 }
 
 void printOut() {
