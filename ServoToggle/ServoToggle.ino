@@ -5,14 +5,14 @@ Servo servo1;
 Servo servo2;
 
 // Define button pins
-const int buttonPin1 = 8;
-const int buttonPin2 = 9;
+const int button1 = 8;
+const int button2 = 9;
 
 // Define LED pins
-const int greenLedPin1 = 10;
-const int redLedPin1 = 11;
-const int greenLedPin2 = 12;
-const int redLedPin2 = 13;
+const int greenLed1 = 10;
+const int redLed1 = 11;
+const int greenLed2 = 12;
+const int redLed2 = 13;
 
 // Define servo positions
 const int servoMinAngle = 0;   // Minimum angle
@@ -41,23 +41,23 @@ void setup() {
   servo2.write(servoPos2);
 
   // Enable internal pull-up resistors for button pins
-  pinMode(buttonPin1, INPUT_PULLUP);
-  pinMode(buttonPin2, INPUT_PULLUP);
+  pinMode(button1, INPUT_PULLUP);
+  pinMode(button2, INPUT_PULLUP);
 
   // Set LED pins as outputs
-  pinMode(greenLedPin1, OUTPUT);
-  pinMode(redLedPin1, OUTPUT);
-  pinMode(greenLedPin2, OUTPUT);
-  pinMode(redLedPin2, OUTPUT);
+  pinMode(greenLed1, OUTPUT);
+  pinMode(redLed1, OUTPUT);
+  pinMode(greenLed2, OUTPUT);
+  pinMode(redLed2, OUTPUT);
 
   // Initialize serial communication
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
   // Read button states
-  int buttonState1 = digitalRead(buttonPin1);
-  int buttonState2 = digitalRead(buttonPin2);
+  int buttonState1 = digitalRead(button1);
+  int buttonState2 = digitalRead(button2);
 
   // Debug print button states
   Serial.print("Button 1 state: ");
@@ -88,10 +88,10 @@ void loop() {
   prevButtonState2 = buttonState2;
 
   // Update LED states based on servo positions
-  digitalWrite(greenLedPin1, (servoPos1 == servoMinAngle) ? HIGH : LOW);
-  digitalWrite(redLedPin1, (servoPos1 == servoMinAngle) ? LOW : HIGH);
-  digitalWrite(greenLedPin2, (servoPos2 == servoMinAngle) ? HIGH : LOW);
-  digitalWrite(redLedPin2, (servoPos2 == servoMinAngle) ? LOW : HIGH);
+  digitalWrite(greenLed1, (servoPos1 == servoMinAngle) ? HIGH : LOW);
+  digitalWrite(redLed1, (servoPos1 == servoMinAngle) ? LOW : HIGH);
+  digitalWrite(greenLed2, (servoPos2 == servoMinAngle) ? HIGH : LOW);
+  digitalWrite(redLed2, (servoPos2 == servoMinAngle) ? LOW : HIGH);
 
   // Add a small delay to prevent overwhelming the serial port
   delay(10);
