@@ -102,6 +102,7 @@ unsigned char mname[8] = { '1', '2', 'I', 'N', '0', 'O', 'U', 'T' };
 const byte VER_MAJ = 2;     // code major version
 const char VER_MIN = 'a';   // code minor version
 const byte VER_BETA = 0;    // code beta sub-version
+const byte MANUFACTURER = MANU_DEV; // for boards in development.
 const byte MODULE_ID = 99;  // CBUS module type
 
 const unsigned long CAN_OSC_FREQ = 8000000;  // Oscillator frequency on the CAN2515 board
@@ -165,6 +166,7 @@ void setupCBUS() {
   // set module parameters
   CBUSParams params(module_config);
   params.setVersion(VER_MAJ, VER_MIN, VER_BETA);
+  params.setManufacturerId(MANUFACTURER);
   params.setModuleId(MODULE_ID);
   params.setFlags(PF_FLiM | PF_COMBI);
 
@@ -204,9 +206,7 @@ void setupModule() {
 
 void setup() {
   Serial.begin(115200);
-  Serial << endl
-         << endl
-         << F("> ** CBUS m in n out v1 ** ") << __FILE__ << endl;
+  Serial << endl << F("> ** CBUS m in n out v1 ** ") << __FILE__ << endl;
 
   setupCBUS();
   setupModule();
